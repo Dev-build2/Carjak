@@ -1,138 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carjak website</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CARJAK WEBSITE </title>
 
 <style>
-  /* GLOBAL */
   body {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #ffffff, #f3ece3, #efe3d1);
-    background-attachment: fixed;
-    color: #2e2e2e;
+    font-family: Arial, sans-serif;
+    background: #0009;
+    color: #fff;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    padding: 30px;
+    padding: 20px;
   }
 
-  /* HEADER */
   header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-  }
-
-  .brand {
-    display: flex;
     align-items: center;
-    gap: 20px;
   }
 
   .pfp-box {
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
-    border: 4px solid #d4af37; /* GOLD BORDER */
+    width: 70px;
+    height: 70px;
+    border: 5px solid #fff;
+    border-radius: 100%;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    animation: float 4s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    font-size: 20px;
+    font-weight: bold;
+    border-color: #000;
   }
 
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
+  .upload-btn {
+    background: #111;
+    border: 1px solid #fff;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 6px;
   }
 
-  /* GRID */
   main {
-    margin-top: 40px;
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1.7fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
   }
 
   .card {
-    background: rgba(255,255,255,0.45);
-    border-radius: 20px;
-    padding: 25px;
-    backdrop-filter: blur(12px);
-    border: 2px solid #d4af37; /* GOLD BORDER */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
   }
 
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-  }
-
-  /* COPY BOX */
   .copy-box {
-    background: rgba(255,255,255,0.8);
-    padding: 14px;
-    border-radius: 12px;
-    border: 2px solid #d4af37; /* GOLD BORDER */
+    background: #A9A9A9;
+    padding: 12px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    font-weight: 500;
-    color: #5a4635;
-    transition: 0.2s ease;
+    margin-top: 10px;
   }
 
-  .copy-box:hover {
-    background: rgba(255,248,237,0.9);
-  }
-
-  /* IFRAME */
   iframe {
     width: 100%;
-    height: 350px;
-    border-radius: 14px;
-    border: 2px solid #d4af37; /* GOLD BORDER */
-    background: #fff;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+    height: 300px;
+    border: none;
+    background: #000;
   }
 
-  /* SOCIAL BUTTONS */
-  .btn {
-    text-decoration: none;
-    padding: 12px 18px;
-    border-radius: 10px;
-    border: 2px solid #d4af37; /* GOLD BORDER */
-    background: linear-gradient(135deg, #fff7e6, #f5e7d4);
-    color: #3b2b1b;
-    display: inline-block;
-    transition: 0.25s ease;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  }
-
-  .btn:hover {
-    background: linear-gradient(135deg, #fce8c9, #ffe3b2);
-    transform: translateY(-3px);
-  }
-
-  /* FOOTER */
   footer {
-    margin-top: 50px;
     text-align: center;
-    color: #796953;
-    font-size: 14px;
+    margin-top: 40px;
+    color: #888;
   }
 
-  /* RESPONSIVE */
   @media(max-width: 900px) {
-    main { grid-template-columns: 1fr; }
+    main {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
@@ -142,6 +99,11 @@
     navigator.clipboard.writeText(ca);
     alert("Contract Address Copied!");
   }
+
+  function previewPfp(event) {
+    const img = document.getElementById("pfp-img");
+    img.src = URL.createObjectURL(event.target.files[0]);
+  }
 </script>
 
 </head>
@@ -149,63 +111,61 @@
 
 <div class="container">
 
-  <!-- HEADER -->
   <header>
-    <div class="brand">
+    <div style="display:flex; align-items:center; gap:15px;">
       <div class="pfp-box">
         <img id="pfp-img" src="carjak.jpg" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div>
-        <h1 style="margin:0;">CARJAK</h1>
-        <p style="color:#7f705a; margin:3px 0;">Luxury Meme Energy • On Solana</p>
+        <h2>CARJAK</h2>
+        <p style="color:#aaa; font-size:14px;">A token with serious vibes</p>
       </div>
     </div>
+
+    
   </header>
 
-  <!-- GRID -->
   <main>
 
-    <!-- LEFT -->
+    <!-- Left -->
     <div class="card">
-      <h3>About the Token</h3>
-      <p style="color:#7f6d5a; margin-top:10px;">
-        A premium-styled memecoin built for hype, community energy, and unstoppable fun.
-      </p>
+      <h3>About CARJAK</h3>
+      <p style="color:#aaa;">Community-driven. Liquidity locked. Meme-powered.</p>
 
-      <p style="margin-top:20px; color:#7f6d5a;">Contract Address:</p>
-      
+      <p style="margin-top:20px; font-size:14px; color:#aaa;">Contract Address:</p>
+
       <div class="copy-box" onclick="copyCA()">
         <span id="ca-text"></span>
-        <span>📋</span>
+        <span>Copy</span>
       </div>
     </div>
 
-    <!-- MIDDLE -->
+    <!-- Middle -->
     <div class="card">
-      <h3>Live Chart</h3>
-      <iframe src="https://dexscreener.com/solana"></iframe>
+      <h3>Live DEX Chart</h3>
+      <iframe src="">https://dexscreener.com/solana/</iframe>
     </div>
 
-    <!-- RIGHT -->
+    <!-- Right -->
     <div class="card">
       <h3>Token Info</h3>
-      <ul style="list-style:none; padding:0; margin-top:12px; line-height:1.9; color:#7f6d5a;">
-        <li>Symbol: <b>CARJAK</b></li>
-        <li>Total Supply: <b>1,000,000,000</b></li>
-        <li>Dave hodls: <b>3%</b></li>
+      <ul style="list-style:none; padding:0; color:#aaa; line-height:1.8;">
+        <li>Symbol: <span style="color:#fff;">CARJAK</span></li>
+        <li>Total Supply: <span style="color:#fff;">1,000,000,000</span></li>
+        
       </ul>
 
-      <h4 style="margin-top:25px;">Socials</h4>
-      <div style="margin-top:12px; display:flex; gap:12px;">
-        <a class="btn" href="https://x.com/architect4token?s=21">Twitter</a>
-        <a class="btn" href="t.me/carjak">Telegram</a>
+      <h4 style="margin-top:20px;">Socials</h4>
+      <div style="display:flex; gap:10px;">
+        <a href="https://x.com/architect4token?s=21" style="color:#fff; text-decoration:none; padding:8px 14px; border:1px solid #444; border-radius:6px;">Twitter</a>
+        <a href="https://t.me/carjak" style="color:#fff; text-decoration:none; padding:8px 14px; border:1px solid #444; border-radius:6px;">Telegram</a>
       </div>
     </div>
 
   </main>
 
   <footer>
-    Built with ✨ — Premium Memecoin Gold Edition
+    Built with ❤️ — Memecoin Template
   </footer>
 
 </div>
